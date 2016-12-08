@@ -3,17 +3,23 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var IndexLink = Router.IndexLink;
 
 var Header = React.createClass({
     render:function(){
         return (
-            <div>
-                <h1>React Router Tutorial</h1>
-                <ul role="nav">
-                    <li><Link to="/authors">authors</Link></li>
-                    <li><Link to="/about">about</Link></li>
-                </ul>
-            </div>
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <IndexLink to="/"  className="navbar-brand">
+                        <img src="images/pluralsight_logo.png"/>
+                    </IndexLink>
+                    <ul className="nav navbar-nav">
+                        <li><IndexLink activeStyle={{ color: 'red' }} to="/">Home</IndexLink></li>
+                        <li><Link activeStyle={{ color: 'red' }} to="/authors">Authors</Link></li>
+                        <li><Link activeStyle={{ color: 'red' }} to="/about">About</Link></li>
+                    </ul>
+                </div>
+            </nav>
         );
     }
 });

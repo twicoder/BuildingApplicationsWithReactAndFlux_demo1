@@ -1,28 +1,20 @@
 "use strict";
 
 var React = require('react');
-var AuthorApi = require('../../api/authorApi');
-var AuthorList = require('./authorList');
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
 
-var Authors = React.createClass({
-    getInitialState:function(){
-        return {
-            authors:[]
-        };
-    },
-    componentWillMount:function(){
-        if(!this.isMounted()){
-            this.setState({authors:AuthorApi.getAllAuthors()});
-        }
-    },
+var Author = React.createClass({
     render:function(){
         return (
             <div>
-                <h1>Authors</h1>
-                <AuthorList authors={this.state.authors}/>
+                <h1>Hello {this.props.params.authorName}</h1>
+                <li><Link to={"/authors/"+this.props.params.authorName+"/BookA"}>BookA</Link></li>
+                <li><Link to={"/authors/"+this.props.params.authorName+"/BookB"}>BookB</Link></li>
+                {this.props.children}
             </div>
-        );
+        )
     }
 });
 
-module.exports = Authors;
+module.exports = Author;

@@ -18,7 +18,8 @@ var config = {
         images:'./src/images/*',
         css:[
             'node_modules/bootstrap/dist/css/bootstrap.css',
-            'node_modules/bootstrap/dist/css/bootstrap-theme.css'
+            'node_modules/bootstrap/dist/css/bootstrap-theme.css',
+            'src/css/style1.css'
         ],
         dist:'./dist',
         mainJs:'./src/main.js'
@@ -82,6 +83,7 @@ gulp.task('lint',function(){
 gulp.task('watch',function(){
    gulp.watch(config.paths.html,['html']);
    gulp.watch(config.paths.js,['js']);
+    gulp.watch(config.paths.css,['css']);
 });
 
 gulp.task('default',['html','js','css','images','open','watch']);
