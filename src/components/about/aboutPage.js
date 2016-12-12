@@ -3,6 +3,16 @@
 var React = require('react');
 
 var About = React.createClass({
+    statics:{
+        willTransitionTo(transition,params,query,callback){
+            alert('test');
+            if(!confirm('Are you sure you wang read page that\'s this boring?')){
+                transition.about();
+            } else {
+                callback();
+            }
+        }
+    },
     render:function(){
         return (
             <div>
